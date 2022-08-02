@@ -1,0 +1,54 @@
+{
+  "name": "@frattaro/oort-homework",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "cypress:install": "./node_modules/.bin/cypress install",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:dev": "cross-env NODE_ENV=test start-server-and-test dev http://localhost:3000 cypress:open",
+    "test:site": "cross-env NODE_ENV=test start-server-and-test dev http://localhost:3000 cypress:run",
+    "pretest": "rimraf .nyc_output coverage .next",
+    "test": "npm run lint && cross-env BABEL_ENV=cypress npm run test:site"
+  },
+  "dependencies": {
+    "@emotion/cache": "11.10.0",
+    "@emotion/react": "11.10.0",
+    "@emotion/server": "11.10.0",
+    "@emotion/styled": "11.10.0",
+    "@mui/icons-material": "5.8.4",
+    "@mui/material": "5.9.3",
+    "@mui/x-data-grid": "5.15.0",
+    "@tanstack/react-query": "4.0.10",
+    "next": "12.2.3",
+    "next-auth": "4.10.3",
+    "next-safe": "3.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "3.10.0",
+    "@trivago/prettier-plugin-sort-imports": "3.3.0",
+    "babel-eslint": "10.1.0",
+    "babel-plugin-istanbul": "6.1.1",
+    "cross-env": "7.0.3",
+    "cypress": "10.3.1",
+    "cypress-wait-until": "1.7.2",
+    "eslint": "8.21.0",
+    "eslint-config-next": "12.2.3",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-anti-trojan-source": "1.1.0",
+    "eslint-plugin-cypress": "2.12.1",
+    "prettier": "2.7.1",
+    "rimraf": "3.0.2",
+    "start-server-and-test": "1.14.0"
+  },
+  "nyc": {
+    "exclude": [
+      "pages/api/__coverage__.js",
+      "pages/api/test-api/"
+    ]
+  }
+}
