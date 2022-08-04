@@ -14,8 +14,8 @@ module.exports = defineConfig({
   screenshotOnRunFailure: false,
   trashAssetsBeforeRuns: true,
   video: false,
-  viewportHeight: 720,
-  viewportWidth: 1480,
+  viewportHeight: 660,
+  viewportWidth: 1000,
   e2e: {
     setupNodeEvents(on, config) {
       require("@cypress/code-coverage/task")(on, config);

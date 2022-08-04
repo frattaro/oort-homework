@@ -4,26 +4,46 @@ import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
-import { AppPage } from "../components";
+import { AppPage, TooltipIfTruncated } from "../components";
 
 const columns = [
-  { field: "name", headerName: "name" },
-  { field: "id", headerName: "id" },
-  { field: "type", headerName: "type" },
+  {
+    field: "name",
+    headerName: "name",
+    flex: 1
+  },
+  { field: "id", headerName: "id", flex: 2 },
+  { field: "type", headerName: "type", flex: 1 },
   {
     field: "state",
-    headerName: "state"
+    headerName: "state",
+    flex: 1
   },
   {
     field: "az",
-    headerName: "az"
+    headerName: "az",
+    flex: 1
   },
-  { field: "public IP", headerName: "public IP" },
+  { field: "public IP", headerName: "public IP", flex: 1 },
   {
     field: "private IPs",
-    headerName: "private IPs"
+    headerName: "private IPs",
+    flex: 1
   }
-];
+].map((x) => {
+  x.renderCell = ({ value }) => (
+    <TooltipIfTruncated
+      css={css`
+        overflow: hidden;
+        text-overflow: ellipsis;
+      `}
+    >
+      {value}
+    </TooltipIfTruncated>
+  );
+
+  return x;
+});
 
 export default function Index() {
   const session = useSession();
@@ -53,7 +73,10 @@ export default function Index() {
       const instances = await response.json();
       return instances;
     },
-    retry: false
+    retry: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false
   });
 
   return (
@@ -78,6 +101,13 @@ export default function Index() {
           sortingMode="server"
           paginationMode="server"
           loading={status === "loading"}
+          css={css`
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: saturate(180%) blur(5px);
+            background-image: none;
+            margin: 12px;
+            margin-bottom: 6px;
+          `}
         />
       </div>
     </AppPage>

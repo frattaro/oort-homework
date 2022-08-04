@@ -1,4 +1,5 @@
 import "@cypress/code-coverage/support";
+import "cypress-real-events/support";
 import "cypress-wait-until";
 
 Cypress.on(
