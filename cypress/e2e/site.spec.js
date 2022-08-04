@@ -34,11 +34,14 @@ context("Site Test Suite", () => {
 
   it("Has an ec2 instances data grid", () => {
     cy.visit("http://localhost:3000");
-    cy.get("body").contains("i-123456");
+    cy.get("body").contains("a-123456");
+
+    cy.get('[aria-label="/dev/quarzite"]').realHover();
+    cy.get(".MuiTooltip-tooltip").contains("/dev/quarzite");
 
     // paging
     cy.get(`[aria-label="Go to next page"]`).click();
-    cy.get("body").contains("n-123456");
+    cy.get("body").contains("f-123456");
 
     // sorting
     cy.get(

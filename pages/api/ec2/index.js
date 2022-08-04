@@ -1,4 +1,4 @@
-import ec2InstancesResponse from "../fixtures/ec2-instances";
+import ec2InstancesResponse from "../../../cypress/fixtures/ec2-instances";
 
 const handler = async (req, res) => {
   if (!req.headers.authorization) {
