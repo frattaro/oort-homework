@@ -38,7 +38,7 @@
     "cypress-real-events": "1.7.1",
     "cypress-wait-until": "1.7.2",
     "eslint": "8.21.0",
-    "eslint-config-next": "12.2.3",
+    "eslint-config-next": "13.1.5",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-anti-trojan-source": "1.1.0",
     "eslint-plugin-cypress": "2.12.1",
